@@ -1,6 +1,12 @@
+<?php 
+include_once 'Database/asuransi_function.php';
+include_once 'Database/pasien_function.php';
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
+    <link rel="stylesheet" href="datatables.min.css">
+    <script type="text/javascript" src="datatables.min.js"></script>
     <title>Praktikum 1 - 1772005</title>
 </head>
 <body>
@@ -10,19 +16,25 @@
     </nav>
     <main>
         <?php 
-        $targetmenu = filter_input(INPUT_GET,'menu');
+            $targetmenu = filter_input(INPUT_GET,'menu');
 
-        switch($targetmenu):
-            case 'pasien':
-                include_once 'view/pasien.php';
-                break;
-            case 'asuransi':
-                include_once 'view/asuransi.php';
-                break;
-            default:
-                include_once 'view/index.php';
-                break;
+            switch($targetmenu){
+                case 'pasien':
+                    include_once 'view/pasien.php';
+                    break;
+                case 'asuransi':
+                    include_once 'view/asuransi.php';
+                    break;
+                default:
+                    include_once 'index.php';
+                    break;
+            }
         ?>
     </main>
 </body>
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
 </html>
